@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EzTurn", "EzTurn\EzTurn.csproj", "{A0F1CF42-CC14-46BB-A76B-43FF54AE283A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A0F1CF42-CC14-46BB-A76B-43FF54AE283A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0F1CF42-CC14-46BB-A76B-43FF54AE283A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0F1CF42-CC14-46BB-A76B-43FF54AE283A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0F1CF42-CC14-46BB-A76B-43FF54AE283A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {705574A2-AAF5-4FE8-8196-05CADEF54BFF}
+	EndGlobalSection
+EndGlobal
