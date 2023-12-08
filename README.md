@@ -4,6 +4,11 @@
 
 ## Description
 
+  =====================================================================
+  ====================     Work in progress      ======================        
+  ====================  Implementing new enemy   ======================
+  =====================================================================
+  
   A simple console turn based game. You have a player and an enemy. Attack or heal until one of you is declared the winner.
 
 ## Table of Contents
