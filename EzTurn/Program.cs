@@ -10,37 +10,47 @@ namespace EzTurn
     {
         static void Main(string[] args)
         {
-            int playerHp = 100;
-            int enemyHp = 50;
+            // Player and Enemy variables
+            int heroHp = 100;
+            int enemy1Hp = 50;
+            int enemy2Hp = 50;
 
-            int playerAttack = 13;
-            int enemyAttack = 18;
+            int heroAttack = 13;
+            int enemy1Attack = 20;
+            int enemy2Attack = 18;
 
-            int playerHeal = 15;
-            int enemyHeal = 6;
+            int heroHeal = 15;
+            int enemy1Heal = 6;
+            int enemy2Heal = 6;
 
             Random random = new Random();
 
-            while(playerHp > 0 && enemyHp > 0)
+            while(heroHp > 0 && enemy1Hp > 0 && enemy2Hp > 0)
             {
-                Console.WriteLine("------*------ Player Turn ------*------");
-                Console.WriteLine($"Player HP - {playerHp} [{GetHealthBar(playerHp)}]");
-                Console.WriteLine($"Enemy HP - {enemyHp} [{GetHealthBar(enemyHp)}]");
+                Console.WriteLine("------*------ Hero Turn ------*------");
+                Console.WriteLine($"Hero HP - {heroHp}");
+                Console.WriteLine($"Enemy1 HP - {enemy1Hp}");
+                Console.WriteLine($"Enemy2 HP - {enemy2Hp}");
+                //Console.WriteLine($"Hero HP - {heroHp} [{GetHealthBar(heroHp)}]");            // disabled health bar until redesigned
+                //Console.WriteLine($"Enemy1 HP - {enemy1Hp} [{GetHealthBar(enemy1Hp)}]");      // disabled health bar until redesigned
                 Console.WriteLine("Enter 'A' to attack or 'H' to heal.");
 
-                string choice = Console.ReadLine();
-                string playerChoice = choice.ToUpper();
+
+                string choice1 = Console.ReadLine();
+                string choice2 = Console.ReadLine();
+                string playerChoice1 = choice1.ToUpper();
+                string playerChoice2 = choice1.ToUpper();
                 
                 // Player turn
-                if(playerChoice == "A")
+                if(playerChoice1 == "A")
                 {
-                    enemyHp -= playerAttack;
-                    Console.WriteLine($"Player attacks the enemy and deals {playerAttack} damage!");
+                    enemy1Hp -= heroAttack;  // Need to choose between enemies
+                    Console.WriteLine($"Player attacks the enemy and deals {heroAttack} damage!");
                 } 
-                else if(playerChoice == "H")
+                else if(playerChoice1 == "H")
                 {
-                    playerHp += playerHeal;
-                    Console.WriteLine($"Player has healed for {playerHeal} HP.");
+                    heroHp += heroHeal;
+                    Console.WriteLine($"Player has healed for {heroHeal} HP.");
                 }
                 else
                 {
@@ -49,47 +59,56 @@ namespace EzTurn
                 }
 
                 // Enemy turn
-                if(enemyHp > 0)
+                if(enemy1Hp > 0)
                 {
                     Console.WriteLine("------*------ Enemy Turn ------*------");
-                    Console.WriteLine($"Player HP - {playerHp} [{GetHealthBar(playerHp)}]");
-                    Console.WriteLine($"Enemy HP - {enemyHp} [{GetHealthBar(enemyHp)}]");
+                    Console.WriteLine($"Hero HP - {heroHp}");
+                    Console.WriteLine($"Enemy1 HP - {enemy1Hp}");
+                    //Console.WriteLine($"Hero HP - {heroHp} [{GetHealthBar(heroHp)}]");            // disabled health bar until redesigned
+                    //Console.WriteLine($"Enemy1 HP - {enemy1Hp} [{GetHealthBar(enemy1Hp)}]");      // disabled health bar until redesigned
                     int enemyChoice = random.Next(0, 2);
 
                     if(enemyChoice == 0)
                     {
-                        playerHp -= enemyAttack;
-                        Console.WriteLine($"Enemy has attacked the player for {enemyAttack} damage!");
+                        heroHp -= enemy1Attack;
+                        Console.WriteLine($"Enemy has attacked the player for {enemy1Attack} damage!");
                     }
                     else
                     {
-                        enemyHp += enemyHeal;
-                        Console.WriteLine($"Enemy has healed themself for {enemyHeal} HP.");
+                        enemy1Hp += enemy1Heal;
+                        Console.WriteLine($"Enemy has healed themself for {enemy1Heal} HP.");
                     }
                 }
             }
             
-            if(playerHp > 0)
+            if(heroHp > 0)
             {
+                Console.WriteLine("***************************************");
                 Console.WriteLine("*****YOU HAVE DEFEATED THE ENEMY!!*****");
+                Console.WriteLine("***************************************");
             }
             else
             {
-                Console.WriteLine("You have been defeated RIP..");
+                Console.WriteLine("**********************************************");
+                Console.WriteLine("***** -RIP- YOU HAVE BEEN DEFEATED -RIP- *****");
+                Console.WriteLine("**********************************************");
             }
             Console.ReadLine();
         }
 
-        static string GetHealthBar(int health)
-        {
-            int maxHealth = 100; // Assuming max health is 100
-            int barLength = 20;  // Length of the health bar
 
-            int filledLength = (int)Math.Ceiling((double)health / maxHealth * barLength);
-            int emptyLength = barLength - filledLength;
+        //=========== Implemented health bar needs to be redesigned ===============================================
 
-            string healthBar = new string('#', filledLength) + new string('-', emptyLength);
-            return $"[{healthBar}]";
-        }
+        //static string GetHealthBar(int health)
+        //{
+        //    int maxHealth = 100; // Assuming max health is 100
+        //    int barLength = 20;  // Length of the health bar
+
+        //    int filledLength = (int)Math.Ceiling((double)health / maxHealth * barLength);
+        //    int emptyLength = barLength - filledLength;
+
+        //    string healthBar = new string('#', filledLength) + new string('-', emptyLength);
+        //    return $"[{healthBar}]";
+        //}
     }
 }
