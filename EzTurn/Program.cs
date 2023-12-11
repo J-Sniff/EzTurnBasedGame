@@ -25,7 +25,7 @@ namespace EzTurn
 
             Random random = new Random();
 
-            while(heroHp > 0 && enemy1Hp > 0 && enemy2Hp > 0)
+            while(heroHp > 0 && (enemy1Hp > 0 || enemy2Hp > 0))
             {
                 Console.WriteLine("------*------ Hero Turn ------*------");
                 Console.WriteLine($"Hero HP - {heroHp}");
@@ -36,18 +36,37 @@ namespace EzTurn
                 Console.WriteLine("Enter 'A' to attack or 'H' to heal.");
 
 
-                string choice1 = Console.ReadLine();
-                string choice2 = Console.ReadLine();
-                string playerChoice1 = choice1.ToUpper();
-                string playerChoice2 = choice1.ToUpper();
+                string choice = Console.ReadLine();
+                string playerChoice = choice.ToUpper();
+                
                 
                 // Player turn
-                if(playerChoice1 == "A")
+                if(playerChoice == "A")
                 {
-                    enemy1Hp -= heroAttack;  // Need to choose between enemies
-                    Console.WriteLine($"Player attacks the enemy and deals {heroAttack} damage!");
+                    Console.WriteLine("Choose the enemy you would like to attack (1 or 2):");
+                    int targetEnemy;
+
+                    // Choosing between enemies
+                    if (int.TryParse(Console.ReadLine(), out targetEnemy) && (targetEnemy == 1 || targetEnemy == 2))
+                    {
+                        if (targetEnemy == 1)
+                        {
+                            enemy1Hp -= heroAttack;  
+                            Console.WriteLine($"Player attacks Enemy1 and deals {heroAttack} damage!");
+                        }
+                        else
+                        {
+                            enemy2Hp -= heroAttack;
+                            Console.WriteLine($"Player attacks Enemy2 and deals {heroAttack} damage!");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid target. Please enter 1 to attack enemy1 or 2 to attack enemy2");
+                        continue;
+                    }
                 } 
-                else if(playerChoice1 == "H")
+                else if(playerChoice == "H")
                 {
                     heroHp += heroHeal;
                     Console.WriteLine($"Player has healed for {heroHeal} HP.");
