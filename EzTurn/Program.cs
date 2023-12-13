@@ -31,8 +31,8 @@ namespace EzTurn
                 Console.WriteLine($"Hero HP - {heroHp}");
                 Console.WriteLine($"Enemy1 HP - {enemy1Hp}");
                 Console.WriteLine($"Enemy2 HP - {enemy2Hp}");
-                //Console.WriteLine($"Hero HP - {heroHp} [{GetHealthBar(heroHp)}]");            // disabled health bar until redesigned
-                //Console.WriteLine($"Enemy1 HP - {enemy1Hp} [{GetHealthBar(enemy1Hp)}]");      // disabled health bar until redesigned
+                //Console.WriteLine($"Hero HP - {heroHp} [{GetHealthBar(heroHp)}]");            // disabled health bar until redesign
+                //Console.WriteLine($"Enemy1 HP - {enemy1Hp} [{GetHealthBar(enemy1Hp)}]");      // disabled health bar until redesign
                 Console.WriteLine("Enter 'A' to attack or 'H' to heal.");
 
 
@@ -83,6 +83,7 @@ namespace EzTurn
                     Console.WriteLine("------*------ Enemy Turn ------*------");
                     Console.WriteLine($"Hero HP - {heroHp}");
                     Console.WriteLine($"Enemy1 HP - {enemy1Hp}");
+                    Console.WriteLine($"Enemy2 HP - {enemy2Hp}");
                     //Console.WriteLine($"Hero HP - {heroHp} [{GetHealthBar(heroHp)}]");            // disabled health bar until redesigned
                     //Console.WriteLine($"Enemy1 HP - {enemy1Hp} [{GetHealthBar(enemy1Hp)}]");      // disabled health bar until redesigned
                     int enemyChoice = random.Next(0, 2);
@@ -90,20 +91,43 @@ namespace EzTurn
                     if(enemyChoice == 0)
                     {
                         heroHp -= enemy1Attack;
-                        Console.WriteLine($"Enemy has attacked the player for {enemy1Attack} damage!");
+                        Console.WriteLine($"Enemy1 has attacked the player for {enemy1Attack} damage!");
                     }
                     else
                     {
                         enemy1Hp += enemy1Heal;
-                        Console.WriteLine($"Enemy has healed themself for {enemy1Heal} HP.");
+                        Console.WriteLine($"Enemy1 has healed themself for {enemy1Heal} HP.");
                     }
                 }
+
+                if (enemy2Hp > 0)
+                {
+                    Console.WriteLine("------*------ Enemy Turn ------*------");
+                    Console.WriteLine($"Hero HP - {heroHp}");
+                    Console.WriteLine($"Enemy1 HP - {enemy1Hp}");
+                    Console.WriteLine($"Enemy2 HP - {enemy2Hp}");
+                    //Console.WriteLine($"Hero HP - {heroHp} [{GetHealthBar(heroHp)}]");            // disabled health bar until redesigned
+                    //Console.WriteLine($"Enemy1 HP - {enemy1Hp} [{GetHealthBar(enemy1Hp)}]");      // disabled health bar until redesigned
+                    int enemyChoice = random.Next(0, 2);
+
+                    if (enemyChoice == 0)
+                    {
+                        heroHp -= enemy2Attack;
+                        Console.WriteLine($"Enemy2 has attacked the player for {enemy2Attack} damage!");
+                    }
+                    else
+                    {
+                        enemy2Hp += enemy2Heal;
+                        Console.WriteLine($"Enemy2 has healed themself for {enemy2Heal} HP.");
+                    }
+                }
+
             }
             
             if(heroHp > 0)
             {
                 Console.WriteLine("***************************************");
-                Console.WriteLine("*****YOU HAVE DEFEATED THE ENEMY!!*****");
+                Console.WriteLine("****YOU HAVE DEFEATED THE ENEMIES!!****");
                 Console.WriteLine("***************************************");
             }
             else
